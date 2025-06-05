@@ -4,7 +4,7 @@ import React from 'react'
 
 const Home = () => {
   return (
-    <Container className='p-10 bg-shop_light_pink'>
+    <Container className='p-10 bg-shop_banner_blue'>
       <Banner />
     </Container>
   )
