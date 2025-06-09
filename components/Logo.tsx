@@ -4,7 +4,7 @@ import React from 'react'
 
 const Logo = ({ className, spanDesign }: { className?: string, spanDesign?: string }) => {
     return (
-        <Link href={"/"}>
+        <Link href={"/"} className='inline-flex'>
             <h2 className={cn("text-2xl text-shop_dark_blue font-black tracking-wider uppercase hover:text-shop_light_blue hoverEffect group font-sans", className)}>
                 GRAB<span className={cn('text-shop_light_blue group-hover:text-shop_dark_blue', spanDesign)}> IT</span></h2>
         </Link >

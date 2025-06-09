@@ -12,7 +12,6 @@ import { ClerkLoaded, SignedIn, UserButton } from '@clerk/nextjs'
 
 const NavBar = async () => {
     const user = await currentUser()
-    console.log(user);
 
     return (
         <header className='bg-white py-5'>
