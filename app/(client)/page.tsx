@@ -1,11 +1,15 @@
 import Banner from '@/components/Banner'
 import Container from '@/components/Container'
+import ProductGrid from '@/components/ProductGrid'
 import React from 'react'
 
 const Home = () => {
   return (
-    <Container className='p-10 bg-shop_banner_blue'>
+    <Container>
       <Banner />
+      <div className='py-10'>
+        <ProductGrid />
+      </div>
     </Container>
   )
 }
