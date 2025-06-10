@@ -1,9 +1,11 @@
 import { urlFor } from '@/sanity/lib/image'
-import { Flame } from 'lucide-react'
+import { Flame, StarIcon } from 'lucide-react'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 import AddtoWishlist from './AddtoWishlist'
+import { SubTitle, Title } from './ui/text'
+import PriceView from './PriceView'
 
 const ProductCard = ({ product }: { product: Product }) => {
     return (
@@ -40,7 +42,44 @@ const ProductCard = ({ product }: { product: Product }) => {
                     </Link>
                 )}
             </div>
-            <div className='p-3'>Product Details</div>
+            <div className='p-3 flex-col gap-2'>
+                <SubTitle className="text-sm line-clamp-2 h-[2.8em] leading-tight">
+                    {product?.name}
+                </SubTitle>
+                {product?.categories && (
+                    <p className="line-clamp-1 text-xs font-medium text-shop_light_gray">
+                        {product.categories.map(category => `#${category}`).join(" ")}
+                    </p>
+                )}
+                <div className="flex items-center gap-2">
+                    <div className="flex items-center gap-0.5">
+                        {[...Array(5)].map((_, index) => (
+                            <StarIcon
+                                key={index}
+                                className={
+                                    index < 4 ? "text-amber-400" : "text-gray-300"
+                                }
+                                fill={index < 4 ? "#FBBF24" : "#E5E7EB"}
+                                size={13} // Optional: adjust star size
+                            />
+                        ))}
+                    </div>
+                    <p className="text-lightText text-xs tracking-wide">5 Reviews</p>
+                </div>
+                <div className="flex items-center gap-2.5">
+                    <p className="font-light text-shop_light_gray">In Stock</p>
+                    <p
+                        className={`${product?.stock === 0 ? "text-red-600" : "text-shop_dark_green/80 font-semibold"}`}
+                    >
+                        {(product?.stock as number) > 0 ? product?.stock : "unavailable"}
+                    </p>
+                </div>
+                <PriceView
+                    price={product?.price}
+                    discount={product?.discount}
+                    className="text-sm"
+                />
+            </div>
         </div>
     )
 }
